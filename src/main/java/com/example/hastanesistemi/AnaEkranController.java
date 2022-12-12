@@ -74,8 +74,17 @@ public class AnaEkranController {
     }
 
     @FXML
-    void onDGirisYapBtn(ActionEvent event) {
-
+    void onDGirisYapBtn(ActionEvent event) throws IOException {
+        if (Objects.equals(dKullancıAdiTxt.getText(), "doktor") && Objects.equals(dSifreTxt.getText(), "1234")){
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("doktorGirisEkraniView.fxml")));
+            stage.setTitle("Doktor Giriş Ekranı");
+            stage.setScene(new Scene(root));
+            stage.show();
+        }
+        else {
+            showAlertWarn();
+        }
     }
 
     @FXML
@@ -84,8 +93,12 @@ public class AnaEkranController {
     }
 
     @FXML
-    void onHKayıtOlButon(ActionEvent event) {
-        dKullancıAdiTxt.getText();
+    void onHKayıtOlButon(ActionEvent event) throws IOException {
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("hastaKayitEkraniView.fxml")));
+        stage.setTitle("Hasta Kayıt Ekranı");
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 
 }

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="496.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hastanesistemi.ReceteYazController">
+   <children>
+      <Label layoutX="71.0" layoutY="88.0" prefHeight="18.0" prefWidth="78.0" text="Hasta TC No:" />
+      <Label layoutX="70.0" layoutY="141.0" text="Randevu Tarihi:" />
+      <Label layoutX="72.0" layoutY="191.0" text="Reçete:" />
+      <TextField fx:id="hastaTCtxt" layoutX="175.0" layoutY="84.0" prefHeight="26.0" prefWidth="175.0" />
+      <DatePicker fx:id="randevuTarihiDate" layoutX="175.0" layoutY="137.0" />
+      <TextArea fx:id="receteTxt" layoutX="175.0" layoutY="184.0" prefHeight="166.0" prefWidth="175.0" />
+      <Label layoutX="122.0" layoutY="25.0" text="REÇETE YAZMA EKRANI">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Button fx:id="receteKaydetBtn" layoutX="373.0" layoutY="314.0" mnemonicParsing="false" onAction="#onReceteKaydetBtn" prefHeight="35.0" prefWidth="71.0" text="Kaydet" />
+   </children>
+</AnchorPane>

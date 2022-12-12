@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hastanesistemi.RandevuGoruntuleController">
+   <children>
+      <TableView fx:id="randevuTablosu" layoutX="76.0" layoutY="97.0" prefHeight="270.0" prefWidth="434.0">
+        <columns>
+          <TableColumn fx:id="hastaAdi" prefWidth="96.79998779296875" text="Hasta Adı" />
+          <TableColumn fx:id="hastaSoyadi" prefWidth="99.20001220703125" text="Hasta Soyadı" />
+            <TableColumn fx:id="randevuSaati" prefWidth="119.2000732421875" text="Randevu Saati" />
+            <TableColumn fx:id="randevuTarihi" prefWidth="118.39996337890625" text="Randevu Tarihi" />
+        </columns>
+      </TableView>
+      <Label layoutX="200.0" layoutY="37.0" prefHeight="20.0" prefWidth="185.0" text="RANDEVULARIM" textAlignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
