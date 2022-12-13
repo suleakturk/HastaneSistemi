@@ -62,11 +62,9 @@ public class AnaEkranController {
     @FXML
     void onBGirisYapBtn(ActionEvent event) throws IOException {
         if (Objects.equals(bAdiTxt.getText(), "bashekim") && Objects.equals(bSifreTxt.getText(), "123")){
-            Stage stage = new Stage();
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("bashekimGirisEkraniView.fxml")));
-            stage.setTitle("Başhekim Giriş Ekranı");
-            stage.setScene(new Scene(root));
-            stage.show();
+            Stage primaryStage = (Stage) bGirisYapBtn.getScene().getWindow();
+            Parent newRoot = FXMLLoader.load(getClass().getResource("bashekimGirisEkraniView.fxml"));
+            primaryStage.getScene().setRoot(newRoot);
         }
         else {
             showAlertWarn();
@@ -76,11 +74,9 @@ public class AnaEkranController {
     @FXML
     void onDGirisYapBtn(ActionEvent event) throws IOException {
         if (Objects.equals(dKullancıAdiTxt.getText(), "doktor") && Objects.equals(dSifreTxt.getText(), "1234")){
-            Stage stage = new Stage();
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("doktorGirisEkraniView.fxml")));
-            stage.setTitle("Doktor Giriş Ekranı");
-            stage.setScene(new Scene(root));
-            stage.show();
+            Stage primaryStage = (Stage) dGirisYapBtn.getScene().getWindow();
+            Parent newRoot = FXMLLoader.load(getClass().getResource("doktorGirisEkraniView.fxml"));
+            primaryStage.getScene().setRoot(newRoot);
         }
         else {
             showAlertWarn();
@@ -88,8 +84,15 @@ public class AnaEkranController {
     }
 
     @FXML
-    void onHGirisYapButon(ActionEvent event) {
-
+    void onHGirisYapButon(ActionEvent event) throws IOException {
+        if (Objects.equals(Integer.parseInt(hastaKimlikTxt.getText()), 1234) && Objects.equals(hastaSifreTxt.getText(), "123")){
+            Stage primaryStage = (Stage) hGirisYapButon.getScene().getWindow();
+            Parent newRoot = FXMLLoader.load(getClass().getResource("hastaGirisEkraniView.fxml"));
+            primaryStage.getScene().setRoot(newRoot);
+        }
+        else {
+            showAlertWarn();
+        }
     }
 
     @FXML
