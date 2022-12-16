@@ -7,7 +7,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.util.Objects;
 
@@ -103,5 +102,4 @@ public class AnaEkranController {
         stage.setScene(new Scene(root));
         stage.show();
     }
-
 }
