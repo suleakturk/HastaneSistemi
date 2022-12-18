@@ -8,9 +8,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Objects;
 
 public class AnaEkranController {
+    DatabaseConnection connection = new DatabaseConnection();
 
     @FXML
     private Tab doktorGirisEkraniBtn;
@@ -84,13 +88,32 @@ public class AnaEkranController {
 
     @FXML
     void onHGirisYapButon(ActionEvent event) throws IOException {
-        if (Objects.equals(Integer.parseInt(hastaKimlikTxt.getText()), 1234) && Objects.equals(hastaSifreTxt.getText(), "123")){
-            Stage primaryStage = (Stage) hGirisYapButon.getScene().getWindow();
-            Parent newRoot = FXMLLoader.load(getClass().getResource("hastaGirisEkraniView.fxml"));
-            primaryStage.getScene().setRoot(newRoot);
-        }
-        else {
-            showAlertWarn();
+        int deneme = 0;
+        String query = "select * from hasta where hastaAdi = ?";
+
+        try {
+            PreparedStatement pst = connection.getConnection().prepareStatement(query);
+            pst.setString(1, "hastaAdi");
+            ResultSet rs = pst.executeQuery();
+
+            while (rs.next()){
+                if (hastaKimlikTxt.getText().equals(rs.getString("hastaAdi"))){
+                    deneme++;
+                    System.out.println("deneme1");
+                }
+            }
+
+            pst.close();
+            rs.close();
+
+            if (deneme != 0){
+                System.out.println("deneme");
+                Stage primaryStage = (Stage) hGirisYapButon.getScene().getWindow();
+                Parent newRoot = FXMLLoader.load(getClass().getResource("hastaGirisEkraniView.fxml"));
+                primaryStage.getScene().setRoot(newRoot);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
