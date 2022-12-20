@@ -11,12 +11,8 @@ public class Hasta {
     public Hasta() {
     }
 
-    public Hasta(int hastaTC, String hastaAdi, String hastaSoyadi, int telefon, String adres) {
+    public Hasta(int hastaTC) {
         HastaTC = hastaTC;
-        HastaAdi = hastaAdi;
-        HastaSoyadi = hastaSoyadi;
-        Telefon = telefon;
-        this.adres = adres;
     }
 
     public int getHastaTC() {

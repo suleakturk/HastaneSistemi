@@ -1,26 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hastanesistemi.RandevuGoruntuleController">
+<AnchorPane prefHeight="474.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hastanesistemi.RandevuGoruntuleController">
    <children>
-      <TableView fx:id="randevuTablosu" layoutX="76.0" layoutY="97.0" prefHeight="270.0" prefWidth="434.0">
+      <TableView fx:id="randevuTablosu" layoutX="75.0" layoutY="165.0" prefHeight="270.0" prefWidth="434.0">
         <columns>
-          <TableColumn fx:id="hastaAdi" prefWidth="96.79998779296875" text="Hasta Adı" />
-          <TableColumn fx:id="hastaSoyadi" prefWidth="99.20001220703125" text="Hasta Soyadı" />
-            <TableColumn fx:id="randevuSaati" prefWidth="119.2000732421875" text="Randevu Saati" />
-            <TableColumn fx:id="randevuTarihi" prefWidth="118.39996337890625" text="Randevu Tarihi" />
+          <TableColumn fx:id="hastaTC" prefWidth="96.79998779296875" text="Hasta TC" />
+            <TableColumn fx:id="randevuTarihi" prefWidth="185.60003662109375" text="Randevu Tarihi" />
+            <TableColumn fx:id="randevuSaati" prefWidth="151.20001220703125" text="Randevu Saati" />
         </columns>
       </TableView>
-      <Label layoutX="200.0" layoutY="37.0" prefHeight="20.0" prefWidth="185.0" text="RANDEVULARIM" textAlignment="CENTER">
+      <Label layoutX="193.0" layoutY="21.0" prefHeight="20.0" prefWidth="185.0" text="RANDEVULARIM" textAlignment="CENTER">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
+      <Label layoutX="75.0" layoutY="76.0" text="Doktor Adı:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="75.0" layoutY="115.0" text="Doktor soyadı:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="doktorAdiTxt" layoutX="199.0" layoutY="73.0" />
+      <TextField fx:id="doktorSoyadiTxt" layoutX="199.0" layoutY="112.0" />
+      <Button layoutX="394.0" layoutY="111.0" mnemonicParsing="false" onMouseClicked="#onRandevularıAraBtn" prefHeight="26.0" prefWidth="114.0" text="Randevuları ara" />
    </children>
 </AnchorPane>

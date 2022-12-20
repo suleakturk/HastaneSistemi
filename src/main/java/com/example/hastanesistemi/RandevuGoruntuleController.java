@@ -1,25 +1,50 @@
 package com.example.hastanesistemi;
-
-
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 
-public class RandevuGoruntuleController {
+import java.net.URL;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
+
+public class RandevuGoruntuleController implements Initializable{
+    ObservableList<Randevu> liste = FXCollections.observableArrayList();
+    DatabaseConnection connection = new DatabaseConnection();
 
     @FXML
-    private TableColumn<?, ?> hastaAdi;
+    private TextField doktorAdiTxt;
 
     @FXML
-    private TableColumn<?, ?> hastaSoyadi;
+    private TextField doktorSoyadiTxt;
 
     @FXML
-    private TableColumn<?, ?> randevuSaati;
+    private TableColumn<Randevu,Integer> hastaTC;
 
     @FXML
-    private TableView<?> randevuTablosu;
+    private TableColumn<Randevu,String> randevuSaati;
 
     @FXML
-    private TableColumn<?, ?> randevuTarihi;
+    private TableView<Randevu> randevuTablosu;
 
+    @FXML
+    private TableColumn<Randevu,String> randevuTarihi;
+
+    @FXML
+    void onRandevularıAraBtn(MouseEvent event) {
+
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
 }
