@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.control.TreeTableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="741.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hastanesistemi.BashekimRandevuGormeController">
+   <children>
+      <Button fx:id="sorgulaBtn" layoutX="541.0" layoutY="97.0" mnemonicParsing="false" onAction="#onSorgulaBtn" prefHeight="26.0" prefWidth="70.0" text="Sorgula" />
+      <Label layoutX="172.0" layoutY="100.0" text="Hasta TC No:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="231.0" layoutY="37.0" text="RANDEVU GÖRÜNTÜLEME EKRANI">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="hastaTcTxt" layoutX="293.0" layoutY="97.0" prefHeight="26.0" prefWidth="172.0" />
+      <TreeTableView fx:id="table" layoutX="99.0" layoutY="152.0" prefHeight="200.0" prefWidth="560.0">
+        <columns>
+          <TreeTableColumn fx:id="poliklinikIDTxt" prefWidth="120.0000228881836" text="PoliklinikAdı" />
+          <TreeTableColumn fx:id="doktorAdiSoyadiTxt" prefWidth="192.0" text="DoktorAdı-Soyadı" />
+            <TreeTableColumn fx:id="randevuTarihiTxt" prefWidth="148.00003051757812" text="RandevuTarihi" />
+            <TreeTableColumn fx:id="randevuSaatiTxt" prefWidth="97.5999755859375" text="Saati" />
+        </columns>
+      </TreeTableView>
+   </children>
+</AnchorPane>

@@ -75,8 +75,14 @@ public class AnaEkranController {
     }
 
     @FXML
-    void onDGirisYapBtn(ActionEvent event) throws IOException {
-        if (Objects.equals(dKullancıAdiTxt.getText(), "doktor") && Objects.equals(dSifreTxt.getText(), "1234")){
+    void onDGirisYapBtn(ActionEvent event) throws IOException, SQLException {
+        String query = "select * from doktor where doktorAdi = ? and sifre = ?";
+        PreparedStatement pst = connection.getConnection().prepareStatement(query);
+        pst.setString(1, dKullancıAdiTxt.getText());
+        pst.setString(2, dSifreTxt.getText());
+        ResultSet rs = pst.executeQuery();
+
+        if (rs.next()){
             Stage primaryStage = (Stage) dGirisYapBtn.getScene().getWindow();
             Parent newRoot = FXMLLoader.load(getClass().getResource("doktorGirisEkraniView.fxml"));
             primaryStage.getScene().setRoot(newRoot);
@@ -87,33 +93,20 @@ public class AnaEkranController {
     }
 
     @FXML
-    void onHGirisYapButon(ActionEvent event) throws IOException {
-        int deneme = 0;
-        String query = "select * from hasta where hastaAdi = ?";
+    void onHGirisYapButon(ActionEvent event) throws IOException, SQLException {
+        String query = "select * from hasta where hastaTC = ? and sifre = ?";
+        PreparedStatement pst = connection.getConnection().prepareStatement(query);
+        pst.setInt(1, Integer.parseInt(hastaKimlikTxt.getText()));
+        pst.setString(2, hastaSifreTxt.getText());
+        ResultSet rs = pst.executeQuery();
 
-        try {
-            PreparedStatement pst = connection.getConnection().prepareStatement(query);
-            pst.setString(1, "hastaAdi");
-            ResultSet rs = pst.executeQuery();
-
-            while (rs.next()){
-                if (hastaKimlikTxt.getText().equals(rs.getString("hastaAdi"))){
-                    deneme++;
-                    System.out.println("deneme1");
-                }
-            }
-
-            pst.close();
-            rs.close();
-
-            if (deneme != 0){
-                System.out.println("deneme");
-                Stage primaryStage = (Stage) hGirisYapButon.getScene().getWindow();
-                Parent newRoot = FXMLLoader.load(getClass().getResource("hastaGirisEkraniView.fxml"));
-                primaryStage.getScene().setRoot(newRoot);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        if (rs.next()){
+            Stage primaryStage = (Stage) hGirisYapButon.getScene().getWindow();
+            Parent newRoot = FXMLLoader.load(getClass().getResource("hastaGirisEkraniView.fxml"));
+            primaryStage.getScene().setRoot(newRoot);
+        }
+        else {
+            showAlertWarn();
         }
     }
 

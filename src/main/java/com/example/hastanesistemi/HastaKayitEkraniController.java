@@ -14,10 +14,7 @@ public class HastaKayitEkraniController {
     DatabaseConnection connection = new DatabaseConnection();
 
     @FXML
-    private TextArea adresTxt;
-
-    @FXML
-    private ComboBox<?> cinsiyetBox;
+    private TextField sifreTxt;
 
     @FXML
     private TextField hastaAdiTxt;
@@ -35,11 +32,6 @@ public class HastaKayitEkraniController {
     private TextField telefontxt;
 
     @FXML
-    void onCinsiyetBox(ActionEvent event) {
-
-    }
-
-    @FXML
     void onKaydetBtn(ActionEvent event) {
         connection.getConnection();
 
@@ -49,15 +41,15 @@ public class HastaKayitEkraniController {
             pst.setInt(1, Integer.parseInt(hastaTCtxt.getText()));
             pst.setString(2,hastaAdiTxt.getText());
             pst.setString(3,hastaSoyadiTxt.getText());
-            pst.setString(4,"546");
+            pst.setString(4,sifreTxt.getText());
             pst.setString(5, telefontxt.getText());
 
             pst.executeUpdate();
             pst.close();
-            System.out.println("ekleme başarıyla sonuçlandı");
+            kaydetBtn.setDisable(true);
+            System.out.println("Yeni hasta ekleme başarıyla sonuçlandı...");
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 }
