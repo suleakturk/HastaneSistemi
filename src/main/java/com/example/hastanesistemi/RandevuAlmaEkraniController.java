@@ -203,11 +203,12 @@ public class RandevuAlmaEkraniController implements Initializable {
         saatler.add("16:00:00");
 
         String query = "select randevusaati from tarih inner join doktor on doktor.doktorid = tarih.doktorid " +
-                "where doktoradi = ? and randevutarihi = ?";
+                "inner join randevu on randevu.doktorid = doktor.doktorid where doktoradi = ? and randevutarihi = ? and durum = ?";
         try {
             PreparedStatement pst = connection.getConnection().prepareStatement(query);
             pst.setString(1,doktorAdiCombobox.getValue());
             pst.setString(2,tarihCombobox.getValue());
+            pst.setString(3,"D");
             ResultSet rs = pst.executeQuery();
 
             while (rs.next()){

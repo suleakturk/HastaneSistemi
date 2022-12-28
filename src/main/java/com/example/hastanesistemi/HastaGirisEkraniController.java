@@ -30,8 +30,12 @@ public class HastaGirisEkraniController {
     }
 
     @FXML
-    void onRandevuGoruntuleBtn(ActionEvent event) {
-
+    void onRandevuGoruntuleBtn(ActionEvent event) throws IOException {
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("randevuSilmeEkraniView.fxml")));
+        stage.setTitle("Randevu Silme Ekranı");
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 
 }

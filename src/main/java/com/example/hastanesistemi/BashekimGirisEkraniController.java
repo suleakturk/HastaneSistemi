@@ -30,8 +30,12 @@ public class BashekimGirisEkraniController {
     }
 
     @FXML
-    void onYeniDoktorKaydiBtn(ActionEvent event) {
-
+    void onYeniDoktorKaydiBtn(ActionEvent event) throws IOException {
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("doktorKayitEkraniView.fxml")));
+        stage.setTitle("Doktor Kayıt Ekranı");
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 
 }

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="421.0" prefWidth="512.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="com.example.hastanesistemi.DoktorKayitEkraniController">
+    <children>
+        <Button fx:id="DkaydetBtn" layoutX="331.0" layoutY="322.0" mnemonicParsing="false" onAction="#onDkaydetBtn" text="Kaydet" />
+        <Label layoutX="85.0" layoutY="111.0" text="Doktor Adı:" />
+        <Label layoutX="88.0" layoutY="156.0" text="Doktor Soyadı:" />
+        <Label layoutX="89.0" layoutY="202.0" text="Şifre:" />
+        <Label layoutX="92.0" layoutY="248.0" text="Poliklinik Adı:" />
+        <Label layoutX="155.0" layoutY="51.0" text="DOKTOR KAYIT EKRANI">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+        <ComboBox fx:id="poliklinikAdiComboBox" layoutX="207.0" layoutY="244.0" prefWidth="150.0" />
+        <TextField fx:id="doktorAdiTxt" layoutX="207.0" layoutY="107.0" />
+        <TextField fx:id="doktorSoyadiTxt" layoutX="207.0" layoutY="152.0" />
+        <PasswordField fx:id="dSifreTxt" layoutX="208.0" layoutY="198.0" />
+    </children>
+</AnchorPane>

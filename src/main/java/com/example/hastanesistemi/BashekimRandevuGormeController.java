@@ -1,39 +1,68 @@
 package com.example.hastanesistemi;
 
-import javafx.event.ActionEvent;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TreeTableColumn;
-import javafx.scene.control.TreeTableView;
+import javafx.fxml.Initializable;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
-public class BashekimRandevuGormeController {
+import java.net.URL;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
 
-    @FXML
-    private TreeTableView<?> table;
-
-    @FXML
-    private TreeTableColumn<?, ?> doktorAdiSoyadiTxt;
-
-    @FXML
-    private TreeTableColumn<?, ?> poliklinikIDTxt;
-
-    @FXML
-    private TreeTableColumn<?, ?> randevuSaatiTxt;
+public class BashekimRandevuGormeController implements Initializable {
+    DatabaseConnection connection = new DatabaseConnection();
+    ObservableList<Randevu> liste = FXCollections.observableArrayList();
 
     @FXML
-    private TreeTableColumn<?, ?> randevuTarihiTxt;
+    private TableView<Randevu> table;
 
     @FXML
-    private Button sorgulaBtn;
+    private TableColumn<Randevu,String> doktorAdiTxt;
 
     @FXML
-    private TextField hastaTcTxt;
-
+    private TableColumn<Randevu,String> durumTxt;
 
     @FXML
-    void onSorgulaBtn(ActionEvent event) {
+    private TableColumn<Randevu,String> doktorSoyadiTxt;
 
+    @FXML
+    private TableColumn<Randevu,String> hastaTcTxt;
+
+    @FXML
+    private TableColumn<Randevu,String> randevuSaatiTxt;
+
+    @FXML
+    private TableColumn<Randevu,String> randevuTarihiTxt;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+            String query = "select hastaTC,doktorAdi,doktorSoyadi,randevuTarihi,randevusaati,durum from tarih " +
+                    "inner join doktor on doktor.doktorid = tarih.doktorid inner join randevu on doktor.doktorid = randevu.doktorid ";
+            ResultSet resultSet = connection.getConnection().createStatement().executeQuery(query);
+
+            while (resultSet.next()){
+                liste.add(new Randevu(resultSet.getString("hastaTC"),
+                        resultSet.getString("doktorAdi"), resultSet.getString("doktorSoyadi"), resultSet.getString("randevuTarihi"),
+                        resultSet.getString("randevuSaati"),resultSet.getString("durum")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        hastaTcTxt.setCellValueFactory(new PropertyValueFactory<>("hastaTC"));
+        doktorAdiTxt.setCellValueFactory(new PropertyValueFactory<>("doktorAdi"));
+        doktorSoyadiTxt.setCellValueFactory(new PropertyValueFactory<>("doktorSoyadi"));
+        randevuTarihiTxt.setCellValueFactory(new PropertyValueFactory<>("randevuTarihi"));
+        randevuSaatiTxt.setCellValueFactory(new PropertyValueFactory<>("randevuSaati"));
+        durumTxt.setCellValueFactory(new PropertyValueFactory<>("durum"));
+
+        table.setItems(liste);
     }
 
 }

@@ -1,7 +1,6 @@
 package com.example.hastanesistemi;
 
 import java.sql.*;
-import java.util.ArrayList;
 
 public class DatabaseConnection {
     public Connection getConnection() {
